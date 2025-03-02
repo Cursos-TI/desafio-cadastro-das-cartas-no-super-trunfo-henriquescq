@@ -1,37 +1,38 @@
 #include <stdio.h>
 /*
-## 🏆 Nível Mestre: Comparação e Super Poder
+Criar um programa em C que permita ao usuário inserir os dados de duas cartas do Super Trunfo. Para cada carta, o usuário deverá fornecer as seguintes informações:
 
-No nível Mestre, você implementará a comparação entre duas cartas e o cálculo do "Super Poder".
+Estado: Uma letra de 'A' a 'H' (representando um dos oito estados). Tipo: char
+ 
+Código da Carta: A letra do estado seguida de um número de 01 a 04 (ex: A01, B03). Tipo: char[] (um array de caracteres, ou string)
+ 
+Nome da Cidade: O nome da cidade. Tipo: char[] (string)
+ 
+População: O número de habitantes da cidade. Tipo: int
+ 
+Área (em km²): A área da cidade em quilômetros quadrados. Tipo: float
+ 
+PIB: O Produto Interno Bruto da cidade. Tipo: float
+ 
+Número de Pontos Turísticos: A quantidade de pontos turísticos na cidade. Tipo: int 
 
-🆕 **Diferença em relação ao Nível Aventureiro:**
-
-*   **Comparação de Cartas:** O usuário poderá comparar as duas cartas.
-*   **Super Poder:** Soma de todos os atributos (inclusive os calculados), com a densidade populacional *invertida* antes da soma (1/densidade).  Tipo: `float`.
-
-⚙️ **Funcionalidades do Sistema:**
-
-*   Comparação atributo a atributo, mostrando qual carta venceu (1 se a Carta 1 vence, 0 se a Carta 2 vence).
-*   Para Densidade Populacional, vence a carta com o *menor* valor.
-*   Para os demais atributos (e o Super Poder), vence a carta com o *maior* valor.
-
-📥 **Entrada** e 📤 **Saída de Dados:**
-
-*   Mesma entrada dos níveis anteriores, mas a População agora é `unsigned long int`.
-*   A saída mostrará o resultado da comparação para cada atributo e o Super Poder.
-
-**Observação:**  Preste atenção à conversão de tipos ao calcular o Super Poder!
+Obs: Nível Aventureiro irá expandir o sistema para incluir o cálculo de dois novos atributos: Densidade Populacional e PIB per capita.
 */
 
-int main() {
+#include <stdio.h> // Biblioteca de IO
+
+int main () {
+
     
-    /* Declarações de variáveis */
-
     char letter_states [5], code_letter [10], name_city [50], letter_states1 [5], code_letter1 [10], name_city1 [50]; // Letra dos estados, código das cartas e nome da cidade.
+    
     int tourist_attractions, tourist_attractions1, victory_cart, victory_cart1; // População, pontos turísticos.
+    
     unsigned long int populat, populat1;
-    float area, PIB, population_density, PIB_per_capita, super_power, area1, PIB1, population_density1, PIB_per_capita1, super_power1, counter; // Área, PIB (Produto interno bruto), Densidade Populacional, PIB por capital
-
+    
+    unsigned long long int area, PIB, super_power, area1, PIB1, super_power1, counter; // Área, PIB (Produto interno bruto), Densidade Populacional, PIB por capital
+    
+    double population_density, PIB_per_capita, population_density1, PIB_per_capita1;
     /* Entrada de dados da carta 1. */
 
     printf ("Carta 1: \n");
@@ -46,13 +47,13 @@ int main() {
     scanf ("%s", &name_city);
 
     printf ("Digite a população da cidade de %s: ", name_city);
-    scanf ("%d", &populat);
+    scanf ("%lu", &populat);
 
     printf ("Digite a área da cidade de %s: ", name_city);
-    scanf ("%e", &area);
+    scanf ("%llu", &area);
 
     printf ("Digite o PIB da cidade de %s: ", name_city);
-    scanf ("%e", &PIB);
+    scanf ("%llu", &PIB);
     
     printf ("Digite os números de pontos turísticos da cidade de %s: ", name_city);
     scanf ("%d", &tourist_attractions);
@@ -69,14 +70,14 @@ int main() {
     printf ("\nEstado: %s \n", letter_states);
     printf ("Código: %s%s \n", letter_states, code_letter);
     printf ("Nome da Cidade: %s \n", name_city);
-    printf ("População: %d \n", populat);
-    printf ("Área: %.2f km² \n", area);
-    printf ("PIB: %.2f \n", PIB);
+    printf ("População: %lu \n", populat);
+    printf ("Área: %llu km² \n", area);
+    printf ("PIB: %llu \n", PIB);
     printf ("Números de Pontos Turísticos: %d \n", tourist_attractions);
     printf ("Densidade Populacional: %.2f \n", population_density);
     printf ("PIB por capital: %.2f \n", PIB_per_capita);
 
-    /* Calculo Super Poder */
+    /* Super Poder */
 
     super_power = (populat + area + PIB + tourist_attractions + population_density + PIB_per_capita) / population_density;
     
@@ -95,13 +96,13 @@ int main() {
     scanf ("%s", &name_city1);
 
     printf ("Digite a população da cidade de %s: ", name_city1);
-    scanf ("%d", &populat1);
+    scanf ("%lu", &populat1);
 
     printf ("Digite a área da cidade de %s: ", name_city1);
-    scanf ("%e", &area1);
+    scanf ("%llu", &area1);
 
     printf ("Digite o PIB da cidade de %s: ", name_city1);
-    scanf ("%e", &PIB1);
+    scanf ("%llu", &PIB1);
     
     printf ("Digite os números de pontos turísticos da cidade de %s: ", name_city1);
     scanf ("%d", &tourist_attractions1);
@@ -118,14 +119,14 @@ int main() {
     printf ("\nEstado: %s \n", letter_states1);
     printf ("Código: %s%s \n", letter_states1, code_letter1);
     printf ("Nome da Cidade: %s \n", name_city1);
-    printf ("População: %d \n", populat1);
-    printf ("Área: %.2f km² \n", area1);
-    printf ("PIB: %.2f \n", PIB1);
+    printf ("População: %lu \n", populat1);
+    printf ("Área: %llu km² \n", area1);
+    printf ("PIB: %llu \n", PIB1);
     printf ("Números de Pontos Turísticos: %d \n", tourist_attractions1);
     printf ("Densidade Populacional: %.2f \n", population_density1);
     printf ("PIB por capital: %.2f \n", PIB_per_capita1);
 
-    /* Calculo Super Poder */
+    /* Super Poder */
 
     super_power1 = (populat1 + area1 + PIB1 + tourist_attractions1 + population_density1 + PIB_per_capita1) / population_density1;
 
@@ -153,7 +154,8 @@ int main() {
     }
     else {
         victory_cart1 = victory_cart1 + 1;
-        printf ("\n2. Na comparação da área entre a carta um e a carta dois = 0\n");
+        printf ("%d", victory_cart1);
+        printf ("2. Na comparação da área entre a carta um e a carta dois = 0\n");
     }
 
     /* Comparação do PIB */
@@ -212,11 +214,11 @@ int main() {
 
     if (super_power > super_power1){
         printf ("\nSuper poder: ");
-        printf ("\nA carta 1 ganha com %.2f pontos no super poder.", super_power);
+        printf ("\nA carta 1 ganha com %llu pontos no super poder.", super_power);
     }
     else {
         printf ("\nSuper poder: ");
-        printf ("\nA carta 2 ganha com %.2f pontos no super poder.", super_power1);
+        printf ("\nA carta 2 ganha com %llu pontos no super poder.", super_power1);
     }
 
     return 0;
